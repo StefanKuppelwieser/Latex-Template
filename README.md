@@ -1,5 +1,9 @@
 # Latex-Template
-Dieses LATEX-Template soll die Erstellung von Berichten erleichtern. Es wurde versucht, in diesem Dokument die wichtigsten Elemente eines Abschlußberichtes beispielhaft zu verwenden. Dazu gehören Listen, Tabellen, Bilder, wörtliche und nicht-wörtliche Zitate, zitierweisen von Zeitschriftenartikeln, Büchern, Abschlußarbeiten und Webseiten, Gleichungen und Referenzierungen von Kapiteln und Grafiken.
+Dieses LATEX-Template soll die Erstellung von Berichten erleichtern.
+Es wurde versucht, in diesem Dokument die wichtigsten Elemente eines Abschlußberichtes beispielhaft zu verwenden.
+Dazu gehören Listen, Tabellen, Bilder, wörtliche und nicht-wörtliche Zitate, zitierweisen von Zeitschriftenartikeln, Büchern, Abschlußarbeiten und Webseiten, Gleichungen und Referenzierungen von Kapiteln und Grafiken.
+
+Das Template wurde im Rahmen unserem Studiums erstellt und gehört deshalb auch der OTH-Regensburg.
 
 In der ReadMe wird erklärt wie man die Latex-Vorlage öffnet.
 Alles weitere wird in der Vorlage erklärt.
