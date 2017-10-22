@@ -1,0 +1,327 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Stand:		22-Oktober-2017
+%% Autoren		Sebastian Büchler
+%%				Orderwb6@gmail.com
+%%				https://github.com/sebikolon
+%%				
+%%				Stefan Kuppelwieser
+%%				edelblistar@online.de
+%%				https://github.com/StefanKuppelwieser
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%%	Die Verwendung der Elemente erhebt keinen Anspruch auf Vollständigkeit.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Dokumentklasse
+\documentclass[a4paper,11pt, twoside]{scrreprt}
+% Raender des Dokuemnts einstellen
+\usepackage[left= 3.0 cm ,right = 3.0 cm, bottom = 3.0 cm, top = 3.0 cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+% ============= Packages =============
+% Dokumentinformationen
+\usepackage[
+	pdftitle={Der Titel des Dokuments},
+	pdfsubject={},
+	pdfauthor={Vorname Nachname},
+	pdfkeywords={},	
+	%Links nicht einrahmen
+	hidelinks,
+	colorlinks=true, % set colors for links and URLs
+	urlcolor=blue, % set colors for links and URLs
+	linkcolor=blue % set colors for links and URLs
+]{hyperref}
+
+
+% Standard Packages
+\usepackage{svg}
+\usepackage{calc}
+\usepackage{booktabs}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx, subfig}
+\graphicspath{{img/}}
+\usepackage{fancyhdr}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{multirow}  % Tabellen-Zellen ueber mehrere Zeilen
+\usepackage{multicol} % mehre Spalten auf eine Seite
+\usepackage{tabularx} % Fuer Tabellen mit vorgegeben Groessen
+\usepackage{lmodern}
+\usepackage{color}
+\usepackage{placeins}
+%\usepackage{subfig}
+\usepackage{xr}
+% zusätzliche Schriftzeichen der American Mathematical Society
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{pdflscape} % Einzelne-Seite-im-Querformat
+\usepackage{pdfpages} 
+\usepackage{float}
+\restylefloat{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Literaturverzeichnis
+%
+% Hier eine von zwei Varianten auswaehlen:
+% Nummern oder Buchstaben fuer Referenzen
+\usepackage[backend=biber, style=alphabetic, sorting=nyt]{biblatex}
+%\usepackage[backend=biber, style=numeric-comp, sorting=none]{biblatex}
+%
+% Hier werden die Referenzen in einer separaten Datei gespeichert
+\addbibresource{Literatur.bib}
+%
+% WICHTIG: Hier wird nicht BibTeX sondern BibLateX verwendet!!
+% Deshalb nicht mit bibtex uebersetzen, sondern mit biber
+% Das kann man in jedem Tool wie TexMaker oder TexShop als Option einstellen
+%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Einstellungen zum Literaturverzeichnis
+%
+% Anpassen bei "alphabetic"
+\ExecuteBibliographyOptions{%
+     maxbibnames=99,   % Alle Autoren (kein et al.)
+     maxcitenames=1,   % Kuerzel nur aus 1. Autor im Text
+     maxalphanames=1,  % nur 1. Autor in der Abkuerzung
+     backref=false,    % keine Ruueckverweise auf Zitatseiten
+     firstinits=true,  % Vornamen abkuerzen
+     isbn=false,       % ISBN ausblenden
+     doi=false,        % DOI ausblenden
+   }
+\renewcommand*{\labelalphaothers}{} % alpha label ohne +
+%
+\renewbibmacro*{volume+number+eid}{%
+     \setunit{\space}\printfield{volume}%
+     \iffieldundef{number}{}{%
+      \printtext[parens]{\printfield{number}}}%
+     \setunit{\addcomma\space}\printfield{eid}}
+%
+% no word 'pages' for articles in the bibliography (print as is)
+\DeclareFieldFormat[article, inproceedings, incollection, unpublished]{pages}{#1} 
+% no quotes for article titles (print as is)
+\DeclareFieldFormat[article, inproceedings, incollection, online, unpublished]{title}{#1} 
+%
+\renewbibmacro*{date}{\printdate}
+\renewbibmacro*{issue+date}{\usebibmacro{issue}}
+\renewbibmacro*{publisher+location+date}{\printlist{publisher}}
+%
+   \setcounter{biburlnumpenalty}{9000}
+   \setcounter{biburlucpenalty}{9000}
+   \setcounter{biburllcpenalty}{9999}
+%
+% "In:" removed for articles; issue/date macros added after note+pages macro
+\DeclareBibliographyDriver{article}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/translator+others}%
+  \setunit{\labelnamepunct}\newblock%
+  \usebibmacro{title}%
+  \newunit%
+  \printlist{language}%
+  \newunit\newblock%
+  \usebibmacro{byauthor}%
+  \newunit\newblock%
+  \usebibmacro{bytranslator+others}%
+  \newunit\newblock%
+  \printfield{version}%
+  \newunit\newblock%
+  \usebibmacro{journal+issuetitle}%
+  \newunit%
+  \usebibmacro{byeditor+others}%
+  \newunit%
+  \usebibmacro{note+pages}%
+  \setunit{\addcomma\addspace}%
+  \usebibmacro{date}%
+  \usebibmacro{finentry}}
+%
+%
+\DeclareBibliographyDriver{inproceedings}{%
+    \usebibmacro{begentry}%
+    \printnames{author}%
+    \setunit{\labelnamepunct}\newblock%
+    \printfield{title}%
+    \setunit{\labelnamepunct}%
+	\usebibmacro{in:}%    
+    \newblock%
+    \ifnameundef{editor}%
+    {%
+    		\setunit{\adddot\space}%
+    		\newunit%
+    }%
+    {%
+     	\setunit{\addspace}%
+     	\printnames[byeditor]{editor}%
+     	\clearname{editor}%
+     	\setunit{\space}%
+     	\printtext[parens]{Hrsg.}%
+     	\setunit{\addcolon\space}%
+     	\newunit%
+     }%
+	\printfield{booktitle}%
+	\setunit{\addcomma\space}%
+	\printfield{pages}%
+	\setunit{\addcomma\space}%
+    \usebibmacro{date}%
+    \usebibmacro{finentry}
+}
+
+\DeclareBibliographyDriver{book}{%
+  \usebibmacro{bibindex}%
+  \usebibmacro{begentry}%
+  \usebibmacro{author/editor+others/translator+others}%
+  \setunit{\labelnamepunct}\newblock
+  \usebibmacro{maintitle+title}%
+  \newunit
+  \printlist{language}%
+  \newunit\newblock
+  \usebibmacro{byauthor}%
+  \newunit\newblock
+  \usebibmacro{byeditor+others}%
+  \newunit\newblock
+  \printfield{edition}%
+  \newunit
+  \iffieldundef{maintitle}
+    {\printfield{volume}%
+     \printfield{part}}
+    {}%
+  \newunit
+  \printfield{volumes}%
+  \newunit\newblock
+  \usebibmacro{series+number}%
+  \newunit\newblock
+  \printfield{note}%
+  \newunit\newblock
+  \usebibmacro{publisher+location+date}%
+  \newunit\newblock
+  \usebibmacro{chapter+pages}%
+  \newunit
+  \printfield{pagetotal}%
+  \newunit\newblock
+  \usebibmacro{doi+eprint+url}%
+  \newunit\newblock
+  \usebibmacro{addendum+pubstate}%
+  \setunit{\bibpagerefpunct}\newblock
+  \usebibmacro{pageref}%
+  \setunit{\addcomma\space}
+  \usebibmacro{date}
+  \usebibmacro{finentry}}
+%  
+%
+ \DeclareBibliographyDriver{online}{%
+   \usebibmacro{bibindex}%
+   \usebibmacro{begentry}%
+   \ifnameundef{author}
+    {\printtext{Autor unbekannt}}
+    {
+		\usebibmacro{author/editor+others/translator+others}%    
+    }%
+   \setunit{\labelnamepunct}\newblock
+   \usebibmacro{title}%
+   \newunitpunct
+   \usebibmacro{url+urldate}%
+   %\usebibmacro{addendum+pubstate}%
+   \usebibmacro{finentry}} 
+
+% Bildunterschrift
+\setcapindent{0em} % kein Einruecken der Caption von Figures und Tabellen
+\setcapwidth{0.9\textwidth}
+\setlength{\abovecaptionskip}{0.2cm} % Abstand der zwischen Bild- und Bildunterschrift
+
+% Nicht einruecken nach Absatz
+\setlength{\parindent}{0pt}
+
+% ============= Kopf- und Fußzeile =============
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\slshape \leftmark}
+%\fancyhead[RE,LO]{Guides and tutorials}
+%\fancyfoot[CE,CO]{\leftmark}
+\fancyfoot[LE,RO]{\thepage}
+%%
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+
+% ============= Package Einstellungen & Sonstiges ============= 
+%Besondere Trennungen
+\hyphenation{De-zi-mal-tren-nung}
+
+% ============= Dokumentbeginn =============
+\begin{document}
+
+%Seiten ohne Kopf- und Fußzeile sowie Seitenzahl
+\pagestyle{empty}
+
+% Titelblatt-Datei einbinden. Hier muessen der Dateiname und der Pfad stimmen!
+\include{01_titel}
+
+% Beendet eine Seite und erzwingt auf den nachfolgenden Seiten die Ausgabe aller Gleitobjekte (z.B. Abbildungen), die bislang definiert, aber noch nicht ausgegeben wurden. Dieser Befehl fuegt, falls nötig, eine leere Seite ein, sodass die naechste Seite nach den Gleitobjekten eine ungerade Seitennummer hat. 
+\cleardoublepage
+
+\pagestyle{fancy}
+\pagenumbering{Roman} % grosse Roemische Seitenummerierung
+
+%Inhaltsverzeichnis
+\tableofcontents
+\cleardoublepage
+
+\pagenumbering{arabic} % ab jetzt arabische Nummerierung
+
+% pagestyle für gesamtes Dokument aktivieren
+\pagestyle{fancy}
+
+% Weitere Datei an dieser Stelle einbinden. Hier muessen der Dateiname und der Pfad stimmen!
+\include{02_Beispiele}
+
+\pagenumbering{Roman} % grosse Roemische Seitenummerierung
+\setcounter{page}{3}
+
+
+% Verzeichnis aller Listings
+%\renewcommand{\lstlistlistingname}{List of \lstlistingname s}
+%\lstlistoflistings
+
+% Literaturverzeichnis
+\printbibliography
+
+
+
+% Zuletzt kommt der Anhang
+\include{99_Anhang}
+
+%Verzeichnis aller Tabellen
+\listoftables
+
+%Verzeichnis aller Bilder
+\listoffigures
+
+
+
+\clearpage
+
+%\setcounter{page}{1}
+
+\fancyhf{}
+\pagenumbering{arabic} % grosse Roemische Seitenummerierung
+
+\fancypagestyle{plain}{%
+\fancyfoot[LE, RO]{A\thepage}}
+\fancyfoot[LE,RO]{A\thepage}
+\fancyhead[LE,RO]{\slshape \leftmark}
+\pagestyle{fancy}
+%\phantomsection
+
+
+\end{document}
