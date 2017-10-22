@@ -1,0 +1,2 @@
+# Latex-Template
+Dieses LATEX-Template soll die Erstellung von Berichten erleichtern. Es wurde versucht, in diesem Dokument die wichtigsten Elemente eines Abschlußberichtes beispielhaft zu verwenden. Dazu gehören Listen, Tabellen, Bilder, wörtliche und nicht-wörtliche Zitate, zitierweisen von Zeitschriftenartikeln, Büchern, Abschlußarbeiten und Webseiten, Gleichungen und Referenzierungen von Kapiteln und Grafiken.
