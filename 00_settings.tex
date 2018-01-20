@@ -286,7 +286,8 @@
 \pagestyle{fancy}
 
 % Weitere Datei an dieser Stelle einbinden. Hier muessen der Dateiname und der Pfad stimmen!
-\include{02_Beispiele}
+% Es kann ebenso statt einem input ein include verwendet werden. Der Unterschied liegt darin, dass ein include immer auf einer neuen Seite beginnt.
+\input{02_Beispiele}
 
 \pagenumbering{Roman} % grosse Roemische Seitenummerierung
 \setcounter{page}{1}
@@ -298,7 +299,7 @@
 
 
 % Zuletzt kommt der Anhang
-\include{99_Anhang}
+\input{99_Anhang}
 
 
 % Literaturverzeichnis
