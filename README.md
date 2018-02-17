@@ -1,17 +1,13 @@
 # Latex-Template
-Dieses Template soll die Erstellung von Dokumenten wie Abschlusarbeiten, Projektdokumentationen oder Schrifstücken zu weiteren Zwecke erleichtern.
-Es wurde versucht, in diesem Dokument die am Häufigsten benötigten Elemente beispielhaft zu verwenden.
-Dazu gehören Listen, Tabellen, Bilder, wörtliche und nicht-wörtliche Zitate, Zitierweisen von Zeitschriftenartikeln, Büchern, Abschlussarbeiten und Webseiten, Gleichungen und Referenzierungen von Kapiteln und Grafiken.
+Dieses Template soll die Erstellung von Abschlussarbeiten, Projektdokumentationen oder anderen Schriftstücken erleichtern.
+Die am Häufigsten benötigten Elemente finden hier beispielhaft Verwendung. Hierzu gehören Listen, Tabellen, Bilder, Zitierungen, Gleichungen, Referenzierungen sowie das Einbinden von Grafiken, Dateien und Dokumenten.
 
-Folgende Beschreibung zeigt, wie man dieses Template mit dem Tool TexMaker öffnet. Die Handhabung der Elemente wird direkt in der Vorlage erläutert.
-
-1.	Zur Erstellung der Latex-Vorlage wurden folgende Programme verwendet:
-	1.1	Texmaker 5.0.2
-	1.2	Miktex 2.9
-2.	Nach der Installation von TexMaker lassen sich die .tex-Dateien mit Drag-and-Drop in den Editor laden.
-3.	Nun wählt man die Datei 00_settings.tex aus und wählt im Menü den Punkt "Aktuelle Datei zur 'Masterdatei' erklären" aus.
-	Dieser Vorgang muss jedes mal nach dem Öffnen von TexMaker wiederholt werden und dient dazu, das Dokument von beliebiger Stelle aus zu bauen.
-4.	Im nächsten Schritt muss man den Compiler anpassen:
+1.	Zur Generierung einer PDF-Ausgabe bieten sich folgende Programme an:
+	1.1	Texmaker (aktuellste Version) zum Editieren der Quelltexte
+	1.2	Miktex 2.9 als Paketmanager zur Verwaltung für im Quelltext verwendete Pakete und Erweiterungen
+2.	Nach der Installation von TexMaker lassen sich die in diesem Repository bereitgestellten .tex-Dateien darin öffnen.
+3.	Um das Generieren einer Ausgabe von einer beliebigen Stelle im Quelltext aus zu ermöglichen, muss die Datei '00_settings.tex' im Menü "zur Masterdatei" erklärt werden. Dieser Schritt muss nach jedem Öffnen des TexMakers wiederholt werden.
+4.	Im nächsten Schritt sollte eine Einstellung für die Generierung des Literaturverzeichnisses mit 'biber' vorgenommen werden:
 	Optionen > Texmaker konfigurieren > Zeile "Befehle" wählen > Bib(la)tex = "C:/Program Files/MiKTeX 2.9/miktex/bin/x64/biber.exe"
-5. Fehlende Packages - sofern im Quellcode verwendet - werden von MikTex automatisch (nach (Bestätigung) nachinstalliert.
+5.  Fehlende Packages - sofern im Quellcode verwendet - werden von MikTex automatisch (nach (Bestätigung) nachinstalliert.
 	
