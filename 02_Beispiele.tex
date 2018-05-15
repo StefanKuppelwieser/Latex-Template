@@ -53,9 +53,9 @@ basicstyle={\normalsize\sffamily}]
 
 
 \section{Einbinden externer Dateien}
-Es besteht die Möglichkeit, einzelne LaTex-Dateien manuell einzubinden. Dies hat den Vorteil, dass man die Kapitel logisch und auch physisch trennen kann.\\
+Es besteht die Möglichkeit, einzelne LaTex-Dateien manuell einzubinden. Dies hat den Vorteil, dass die Kapitel logisch und physisch voneinander getrennt werden können, was bei der Arbeit mit einem Repository mit mehreren Teilnehmern von Vorteil ist.\\
 
-Dazu muss man die Default-Datei (in diesem Fall die aktuelle '00\_settings.tex'-Datei) editieren. Im Vorfeld muss im selben Verzeichnis eine neue, leere Datei mit der Endung '.tex' erstellt werden. In Abbildung \ref{lst:Tex-DateienEinbinden} wird die Datei namens \textit{01\_titel.tex} eingebunden.
+Jede einzelne \textit{.tex}-Datei muss hierzu in der \textit{Masterdatei} referenziert werden. In Abbildung \ref{lst:Tex-DateienEinbinden} wird die Datei namens \textit{01\_titel.tex} eingebunden.
 
 \FloatBarrier
 \begin{figure}[htb]
@@ -73,7 +73,7 @@ xleftmargin=22pt]
 ;	\include{01_titel}
 ;           
 \end{lstlisting}
-  \caption[Einbinden einer externen Datei]{Einbinden einer externen Datei. Der Dateiname muss exakt (ohne Endung) angegeben werden.}
+  \caption[Einbinden einer externen Datei]{Einbinden einer externen Datei. Der Dateiname muss hier exakt, jedoch ohne Dateiendung angegeben werden.}
 \label{lst:extDateieinbinden}
 \end{figure}
 
@@ -94,7 +94,7 @@ An dieser Stelle befindet sich ein Beispiel, wie ein interner Verweis aufgebaut 
 
 \section{Einbinden von PDF-Dateien}
 \label{sec:PDFeinfuegen}
-Das Keyword 'trim' schneidet den gewünschten Ausschnitt der Datei passend zu. Dabei ist die Reihenfolge der Seiten zu beachten. Zuerst wird links, dann unten, dann rechts und zuletzt die obere Seite angepasst. Zum Schluss muss das Argument \textit{clip} angefügt werden, ansonsten hat der Trick keinen Effekt.
+Das Keyword \textit{trim} schneidet den gewünschten Ausschnitt der Datei passend zu. Dabei ist die Reihenfolge der Seiten zu beachten. Zuerst wird links, dann unten, dann rechts und zuletzt die obere Seite angepasst. Zum Schluss muss das Argument \textit{clip} angefügt werden, ansonsten hat der Trick keinen Effekt.
 
 % ### EINBINDEN VON PDFs
 \begin{figure}[htb]
@@ -109,12 +109,13 @@ Das Keyword 'trim' schneidet den gewünschten Ausschnitt der Datei passend zu. D
 
 \section{Tabellen}
 \label{sec:Tabellen}
-Tabellen sind in LaTex nicht ganz einfach zu verwalten. Man sollte sich vor dem Eingeben einer Tabelle genaue Gedanken machen, wie sie aussehen soll und welche Inhalte wo hingehören. Spalten im Nachhinein zu vertauschen, bedeutet einen vergleichsweise großen Aufwand.
+Tabellen sind mit etwas Aufwand zu verwalten. Der grobe Aufbau sollte vor Beginn klar sein. Spalten im Nachhinein zu vertauschen, bedeutet einen vergleichsweise großen Aufwand.
 
-\subsection{Tabelle 1}
+\subsection{Tabelle 1 - einfach}
 \label{subsection:Tabelle1}
 
-% ### HIER KOMMT EINE TABELLE ###
+In Tabelle \ref{tab:Tabelle1} ist eine einfache Tabelle zu sehen.\\
+
 \newcolumntype{b}{X}
 \newcolumntype{s}{>{\hsize=.2\hsize}X}
 \begin{table}[H]
@@ -128,13 +129,15 @@ Zelle11 & Zelle12.  \\ \hline
 Zelle21 & Zelle22. \\ \hline
 
 \end{tabularx}
-\caption[Eine Einfache Tabelle zum darstellen von Werten]{Das ist eine einfache Tabelle, die  zwei Spalten und 3 Zeilen hat.
+\caption[Einfache Tabelle]{Das ist eine einfache Tabelle, die zwei Spalten und drei Zeilen besitzt.
 \label{tab:Tabelle1}}
 \end{table}
 \FloatBarrier
 
-\subsection{Tabelle 2}
+\subsection{Tabelle 2 - komplex}
 \label{subsection:Tabelle2}
+
+In Tabelle \ref{tab:Tabelle2} ist eine komplexere Tabelle zu sehen.\\
 
 \begin{table}[H]\vspace{1ex}\centering
 \begin{tabular*}{12cm}{ll|@{\extracolsep\fill}cccc}
@@ -147,12 +150,59 @@ Zelle21 & Zelle22. \\ \hline
 & Proband 4 &  negativ  & negativ & \textbf{positiv} & bla \\%\cline{2-6}
 & Proband 5 &  negativ  & negativ & negativ & negativ  \\\hline
 \end{tabular*}
-\caption[Beispieltabelle]{Das ist ein Beispiel f"ur eine recht komplexe Tabelle.
+\caption[Komplexe Tabelle]{Das ist ein Beispiel f"ur eine recht komplexe Tabelle.
 Nicht der gesamte Text der Tabellenunterschrift sollte im Tabellenverzeichnis auftauchen.
 Hier wurde der beste Wert \textbf{fett} markiert.
 \label{tab:Tabelle2}}
 \vspace{2ex}\end{table}
 
+\subsection{Tabelle 3 - mit Minipage}
+\label{subsection:Tabelle3}
+Referenzen auf Fußnoten \textit{innerhalb} einer Tabelle werden erst vollständig angezeigt, wenn die Tabelle von einer \textbf{Minipage} eingefasst ist. Die Fußnoten folgen jedoch dann direkt hinter der Tabelle.
+
+\FloatBarrier
+\newcolumntype{a}{>{\hsize=.8\hsize}X}
+\newcolumntype{g}{>{\hsize=.5\hsize}X}
+\newcolumntype{o}{>{\hsize=.1\hsize}X}
+\begin{table}[H]
+\begin{minipage}{\textwidth}
+\begin{tabularx}{\textwidth}{ago}
+%{X|X}
+\textbf{Spalte1} &  \textbf{Spalte2} & \textbf{Spalte3}\\
+\hline
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr. & Vendor\footnote{\url{https://www.amazon.de}, Aufruf am 04.03.2018} & 33,99  \\ \hline
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr. & Vendor\footnote{\url{https://www.amazon.de}, Aufruf am 04.03.2018} & 33,47 \\ \hline
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr. & Vendor\footnote{\url{https://www.amazon.de}, Aufruf am 04.03.2018} & 42,99 \\ \hline 
+
+\end{tabularx}
+\caption[Minipage in einer Tabelle]{Das ist ein Beispiel f"ur eine Tabelle, die von einer Minpage eingefasst wird, um alle Referenzen der Fußzeile anzuzeigen.}
+\label{tab:Tabelle3}
+\end{minipage}
+\end{table}
+\FloatBarrier
+
+
+\subsection{Tabelle 4 - mit Parbox}
+\label{subsection:Tabelle4}
+Zu breite Wörter oder Sätze innerhalb einer Zelle einer Tabelle können mit einer sogenannten \textbf{Parbox} zu einem Zeilenumbruch gezwungen werden, wie in Tabelle \ref{tab:Tabelle4} zu sehen. Auch die Zellen- bzw. Spaltenbreite kann durch die Parbox bestimmt werden, ist dann jedoch nicht mehr relativ.
+
+\begin{table}[H]\centering
+\begin{tabularx}{\textwidth}{l l l} 			
+\parbox[t]{2.5cm}{\textbf{Spalte1}}	& \parbox[t]{9cm}{\textbf{Spalte2}}                                 			& \textbf{Spalte3}	\\\hline
+
+\parbox[t]{2.5cm}{Zelle1}             		& \parbox[t]{9cm}{Zelle2}                                                 	&   Zelle3                 	\\ 
+
+\parbox[t]{2.5cm}{Zelle1}    	   	    	& \parbox[t]{9cm}{Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. )}	& Zelle3        \\
+
+\parbox[t]{2.5cm}{Zelle1}             		& \parbox[t]{9cm}{Zelle2}                                                 	&   Zelle3                 	\\ 
+
+\end{tabularx}
+\caption[ParBox in einer Tabelle]{Die Breite eines Zelleninhalts kann mit einer Parbox begrenzt werden.}
+\label{tab:Tabelle4}
+\end{table}
 
 
 
@@ -215,7 +265,7 @@ std::cout << "c = " << c << std::endl;
 \subsection{Listing 2}
 \label{subsec:Listing 2}
 
-Das hier ist ein Listing, das ASCII-Code einbettet.
+Das Listing \ref{lst:Diagramm} ist eines, das ASCII-Code einbettet.
 
 % ### Das hier ist ein Listing, das ASCII-Code einbettet ###
 \FloatBarrier
@@ -244,7 +294,7 @@ xleftmargin=22pt]
 ;           |          Return [1]          |
 ;           '------------------------------'
 \end{lstlisting}
-  \caption[Ein Listing inklusive Zeilennummern]{Dieses Listing kann verwendet werden, um ein einfaches Diagramm zu erstellen oder Code einzubinden. Die Formatierungsparameter sind zahlreich verfügbar.}
+  \caption[Ein Listing mit ASCII-Code und Zeilennummern]{Dieses Listing kann verwendet werden, um ein einfaches Diagramm zu erstellen oder Code einzubinden. Die Formatierungsparameter sind zahlreich verfügbar.}
 \label{lst:Diagramm}
 \end{figure}
 
@@ -286,6 +336,7 @@ Formeln werden nach folgendem Schema angegeben:
 g = n\cdot l_n + l_i + l_l + 1.
 \label{gle:Laenge}
 \end{equation}
+
 
 
 
