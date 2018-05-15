@@ -22,8 +22,8 @@ Dieses Template hilft bei der Erstellung von Abschlussarbeiten, Projektdokumenta
 
 ## Autoren
 
-* **Sebastian Büchler** - [Github](https://github.com/sebikolon) - [Private Website](https://wwww.sbuechler.de)
-* **Stefan Kuppelwieser** - [Github](https://github.com/StefanKuppelwieser) - [Private Website](https://wwww.kuppelwieser.net)
+* **Sebastian Büchler** - [Github](https://github.com/sebikolon) - [Private Website](https://www.sbuechler.de)
+* **Stefan Kuppelwieser** - [Github](https://github.com/StefanKuppelwieser) - [Private Website](https://www.kuppelwieser.net)
 
 ## Lizenz
 
