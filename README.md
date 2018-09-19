@@ -20,6 +20,11 @@ Dieses Template hilft bei der Erstellung von Abschlussarbeiten, Projektdokumenta
 	- Optionen > Texmaker konfigurieren > Zeile "Befehle" wählen > Bib(la)tex = *C:/Program Files/MiKTeX 2.9/miktex/bin/x64/biber.exe*
 4.  Fehlende Packages - sofern im Quellcode verwendet - werden von MikTex (nach Bestätigung durch den Benutzer) nachinstalliert.
 
+## Mathematische Symbole
+
+1.	Auf der Seite können die Codes für sämtliche mathematische Symbole gefunden werden
+	- [LaTeX Math Symbols ](http://web.ift.uib.no/Teori/KURS/WRK/TeX/symALL.html)
+
 ## Autoren
 
 * **Sebastian Büchler** - [Github](https://github.com/sebikolon) - [Private Website](https://www.sbuechler.de)
