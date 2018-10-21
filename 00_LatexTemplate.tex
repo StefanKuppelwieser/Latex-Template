@@ -1,0 +1,81 @@
+% ============= Settings importieren =============
+\input{00_Settings}
+
+
+% ============= Dokumentbeginn =============
+\begin{document}
+
+%Seiten ohne Kopf- und Fußzeile sowie Seitenzahl
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%%
+%% Titelblatt
+%%%%%%%%%%%%%%%%%%
+\include{01_titel}
+
+%%%%%%%%%%%%%%%%%
+%% Plagiatsprüfung
+%%%%%%%%%%%%%%%%%%
+\include{02_Plagiat}
+
+%%%%%%%%%%%%%%%%%
+%% Abstract
+%%%%%%%%%%%%%%%%%%
+\include{03_Abstract}
+
+%%%%%%%%%%%%%%%%%
+%% Inhaltsverzeichnis
+%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\clearpage
+
+%%%%%%%%%%%%%%%%%
+%% Eigentliche Ausarbeitung
+%%%%%%%%%%%%%%%%%%
+
+% Es kann ebenso statt einem input ein include verwendet werden. Der Unterschied liegt darin, dass ein include immer auf einer neuen Seite beginnt.
+\include{04_Beispiele}
+
+
+\pagenumbering{Roman} % grosse Roemische Seitenummerierung
+\setcounter{page}{1}
+
+%%%%%%%%%%%%%%%%%
+%% Verzeichnis aller Listings
+%%%%%%%%%%%%%%%%%%
+%\renewcommand{\lstlistlistingname}{List of \lstlistingname s}
+%\lstlistoflistings
+%\cleardoublepage
+
+
+
+%%%%%%%%%%%%%%%%%
+%% Literaturverzeichnis
+%%%%%%%%%%%%%%%%%%
+\printbibliography
+
+
+
+%%%%%%%%%%%%%%%%%
+%% Anhang
+%%%%%%%%%%%%%%%%%%
+\include{98_Anhang}
+
+
+%%%%%%%%%%%%%%%%%
+%% Verzeichnis aller Tabellen
+%%%%%%%%%%%%%%%%%%
+\listoftables
+
+%%%%%%%%%%%%%%%%%
+%% Verzeichnis aller Bilder
+%%%%%%%%%%%%%%%%%%
+\listoffigures
+
+%%%%%%%%%%%%%%%%%
+%% Danksagung
+%%%%%%%%%%%%%%%%%%
+\input{99_Danksagung}
+
+
+\end{document}

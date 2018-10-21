@@ -19,16 +19,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %Dokumentklasse
-\documentclass[a4paper,11pt, twoside]{scrreprt}
+\documentclass[a4paper,11pt]{scrreprt}
 % Raender des Dokuemnts einstellen
 \usepackage[left= 3.0 cm ,right = 3.0 cm, bottom = 3.0 cm, top = 3.0 cm]{geometry}
 \usepackage[onehalfspacing]{setspace}
 % ============= Packages =============
 % Dokumentinformationen
 \usepackage[
-	pdftitle={Der Titel des Dokuments},
+	pdftitle={Titel},
 	pdfsubject={},
-	pdfauthor={Vorname Nachname},
+	pdfauthor={Stefan Kuppelwieser und Sebastian Büchler},
 	pdfkeywords={},	
 	%Links nicht einrahmen
 	hidelinks,
@@ -37,8 +37,7 @@
 	linkcolor=blue % set colors for links and URLs
 ]{hyperref}
 
-
-% Standard Packages
+% ============= Standard Packages =============
 \usepackage{svg}
 \usepackage{calc}
 \usepackage{booktabs}
@@ -48,7 +47,6 @@
 \usepackage{graphicx, subfig}
 \graphicspath{{img/}}
 \usepackage{fancyhdr}
-\usepackage{ulem} % Wird zum durchstreichen verwendet
 \usepackage{array}
 \usepackage{listings}
 \usepackage{multirow}  % Tabellen-Zellen ueber mehrere Zeilen
@@ -66,8 +64,10 @@
 \usepackage{pdfpages} 
 \usepackage{float}
 \restylefloat{figure}
+\usepackage{ulem}
+\usepackage{threeparttable} % Für Fußnoten ind er Tabelle
 
-% Dieses Attribut escaped deutsche Umlaute.
+% ============= Erlaubt überall Umlaute =============
 \lstset{literate=%
     {Ö}{{\"O}}1
     {Ä}{{\"A}}1
@@ -79,7 +79,7 @@
     {~}{{\textasciitilde}}1
 }
 
-% Formatierung fuer Quellcode-Listings
+% ============= Formatierung fuer Quellcode-Listings
 \lstset{
    numbers=none,
    tabsize=3,
@@ -276,82 +276,12 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
+% ============= Tabelle =============
+\renewcommand{\arraystretch}{1.4} %Zuständig für die Zeilenhöhe
 
 % ============= Package Einstellungen & Sonstiges ============= 
 %Besondere Trennungen
 \hyphenation{De-zi-mal-tren-nung}
 
-
-% Erzwingen eines Zeilenumbruchs innerhalb einer URL
+% ============= Erzwingen eines Zeilenumbruchs innerhalb einer URL =============
 \renewcommand{\UrlBreaks}{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j\do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D\do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N\do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X\do\Y\do\Z}
-
-
-% ============= Dokumentbeginn =============
-\begin{document}
-
-%Seiten ohne Kopf- und Fußzeile sowie Seitenzahl
-\pagestyle{empty}
-
-% Titelblatt-Datei einbinden. Hier muessen der Dateiname und der Pfad stimmen!
-\include{01_titel}
-
-% Beendet eine Seite und erzwingt auf den nachfolgenden Seiten die Ausgabe aller Gleitobjekte (z.B. Abbildungen), die bislang definiert, aber noch nicht ausgegeben wurden. Dieser Befehl fuegt, falls nötig, eine leere Seite ein, sodass die naechste Seite nach den Gleitobjekten eine ungerade Seitennummer hat. 
-\cleardoublepage
-
-\pagestyle{fancy}
-\pagenumbering{Roman} % grosse Roemische Seitenummerierung
-
-%Inhaltsverzeichnis
-\tableofcontents
-\cleardoublepage
-
-\pagenumbering{arabic} % ab jetzt arabische Nummerierung
-
-% pagestyle für gesamtes Dokument aktivieren
-\pagestyle{fancy}
-
-% Weitere Datei an dieser Stelle einbinden. Hier muessen der Dateiname und der Pfad stimmen!
-% Es kann ebenso statt einem input ein include verwendet werden. Der Unterschied liegt darin, dass ein include immer auf einer neuen Seite beginnt.
-\input{02_Beispiele}
-
-\pagenumbering{Roman} % grosse Roemische Seitenummerierung
-\setcounter{page}{1}
-
-
-% Verzeichnis aller Listings
-%\renewcommand{\lstlistlistingname}{List of \lstlistingname s}
-%\lstlistoflistings
-
-
-% Zuletzt kommt der Anhang
-\input{99_Anhang}
-
-
-% Literaturverzeichnis
-\printbibliography
-
-
-%Verzeichnis aller Tabellen
-\listoftables
-
-%Verzeichnis aller Bilder
-\listoffigures
-
-
-
-\clearpage
-
-%\setcounter{page}{1}
-
-\fancyhf{}
-\pagenumbering{arabic} % grosse Roemische Seitenummerierung
-
-\fancypagestyle{plain}{%
-\fancyfoot[LE, RO]{A\thepage}}
-\fancyfoot[LE,RO]{A\thepage}
-\fancyhead[LE,RO]{\slshape \leftmark}
-\pagestyle{fancy}
-%\phantomsection
-
-
-\end{document}
