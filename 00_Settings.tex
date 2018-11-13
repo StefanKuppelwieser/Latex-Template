@@ -26,8 +26,8 @@
 % ============= Packages =============
 % Dokumentinformationen
 \usepackage[
-	pdftitle={Titel},
-	pdfsubject={},
+	pdftitle={Latex-Template},
+	pdfsubject={Latex-Template},
 	pdfauthor={Stefan Kuppelwieser und Sebastian Büchler},
 	pdfkeywords={},	
 	%Links nicht einrahmen
@@ -42,16 +42,17 @@
 \usepackage{calc}
 \usepackage{booktabs}
 \usepackage[utf8]{inputenc}
-\usepackage[ngerman]{babel}
+\usepackage[ngerman]{babel}			 	% Für BibLatex
+\usepackage[babel, german=quotes]{csquotes}		% Für BibLatex
 \usepackage[T1]{fontenc}
 \usepackage{graphicx, subfig}
 \graphicspath{{img/}}
 \usepackage{fancyhdr}
 \usepackage{array}
 \usepackage{listings}
-\usepackage{multirow}  % Tabellen-Zellen ueber mehrere Zeilen
-\usepackage{multicol} % mehre Spalten auf eine Seite
-\usepackage{tabularx} % Fuer Tabellen mit vorgegeben Groessen
+\usepackage{multirow} 				 	% Tabellen-Zellen ueber mehrere Zeilen
+\usepackage{multicol} 				 	% mehre Spalten auf eine Seite
+\usepackage{tabularx}                			% Fuer Tabellen mit vorgegeben Groessen
 \usepackage{lmodern}
 \usepackage{color}
 \usepackage{placeins}
@@ -60,12 +61,11 @@
 % zusätzliche Schriftzeichen der American Mathematical Society
 \usepackage{amsfonts}
 \usepackage{amsmath}
-\usepackage{pdflscape} % Einzelne-Seite-im-Querformat
+\usepackage{pdflscape}              			% Einzelne-Seite-im-Querformat
 \usepackage{pdfpages} 
 \usepackage{float}
 \restylefloat{figure}
-\usepackage{ulem}
-\usepackage{threeparttable} % Für Fußnoten ind er Tabelle
+\usepackage{threeparttable}        			% Für Fußnoten ind er Tabelle
 
 % ============= Erlaubt überall Umlaute =============
 \lstset{literate=%
@@ -79,7 +79,7 @@
     {~}{{\textasciitilde}}1
 }
 
-% ============= Formatierung fuer Quellcode-Listings
+% ============= Formatierung fuer Quellcode-Listings =============
 \lstset{
    numbers=none,
    tabsize=3,
@@ -90,175 +90,31 @@
    columns=fullflexible
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Literaturverzeichnis
-%
-% Hier eine von zwei Varianten auswaehlen:
-% Nummern oder Buchstaben fuer Referenzen
-\usepackage[backend=biber, style=alphabetic, sorting=nyt]{biblatex}
-%\usepackage[backend=biber, style=numeric-comp, sorting=none]{biblatex}
-%
-% Hier werden die Referenzen in einer separaten Datei gespeichert
-\addbibresource{Literatur.bib}
-%
+% ============= Literaturverzeichnis =============
 % WICHTIG: Hier wird nicht BibTeX sondern BibLateX verwendet!!
 % Deshalb nicht mit bibtex uebersetzen, sondern mit biber
 % Das kann man in jedem Tool wie TexMaker oder TexShop als Option einstellen
-%
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+%\usepackage[backend=biber, style=numeric-comp, sorting=none]{biblatex}
+
+% Hier werden die Referenzen in einer separaten Datei gespeichert
+\addbibresource{Literatur.bib}
 
 % Maximale Tiefe des Inhaltsverzeichnisses
 \setcounter{tocdepth}{1}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Einstellungen zum Literaturverzeichnis
-%
-% Anpassen bei "alphabetic"
 \ExecuteBibliographyOptions{%
-     maxbibnames=99,   % Alle Autoren (kein et al.)
-     maxcitenames=1,   % Kuerzel nur aus 1. Autor im Text
-     maxalphanames=1,  % nur 1. Autor in der Abkuerzung
-     backref=false,    % keine Ruueckverweise auf Zitatseiten
-     firstinits=true,  % Vornamen abkuerzen
-     isbn=false,       % ISBN ausblenden
-     doi=false,        % DOI ausblenden
+	sorting=nty,		% Sortiert alphabetisch nach Name, Titel und Jahr
+	isbn=false,
+	url=false,
+	doi=false,
+	eprint=false,
+	firstinits=true,
+    maxbibnames=99,   	% Alle Autoren (kein et al.)
+    backref=false,    	% keine Ruueckverweise auf Zitatseiten    
    }
-\renewcommand*{\labelalphaothers}{} % alpha label ohne +
-%
-\renewbibmacro*{volume+number+eid}{%
-     \setunit{\space}\printfield{volume}%
-     \iffieldundef{number}{}{%
-      \printtext[parens]{\printfield{number}}}%
-     \setunit{\addcomma\space}\printfield{eid}}
-%
-% no word 'pages' for articles in the bibliography (print as is)
-\DeclareFieldFormat[article, inproceedings, incollection, unpublished]{pages}{#1} 
-% no quotes for article titles (print as is)
-\DeclareFieldFormat[article, inproceedings, incollection, online, unpublished]{title}{#1} 
-%
-\renewbibmacro*{date}{\printdate}
-\renewbibmacro*{issue+date}{\usebibmacro{issue}}
-\renewbibmacro*{publisher+location+date}{\printlist{publisher}}
-%
-   \setcounter{biburlnumpenalty}{9000}
-   \setcounter{biburlucpenalty}{9000}
-   \setcounter{biburllcpenalty}{9999}
-%
-% "In:" removed for articles; issue/date macros added after note+pages macro
-\DeclareBibliographyDriver{article}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/translator+others}%
-  \setunit{\labelnamepunct}\newblock%
-  \usebibmacro{title}%
-  \newunit%
-  \printlist{language}%
-  \newunit\newblock%
-  \usebibmacro{byauthor}%
-  \newunit\newblock%
-  \usebibmacro{bytranslator+others}%
-  \newunit\newblock%
-  \printfield{version}%
-  \newunit\newblock%
-  \usebibmacro{journal+issuetitle}%
-  \newunit%
-  \usebibmacro{byeditor+others}%
-  \newunit%
-  \usebibmacro{note+pages}%
-  \setunit{\addcomma\addspace}%
-  \usebibmacro{date}%
-  \usebibmacro{finentry}}
-%
-%
-\DeclareBibliographyDriver{inproceedings}{%
-    \usebibmacro{begentry}%
-    \printnames{author}%
-    \setunit{\labelnamepunct}\newblock%
-    \printfield{title}%
-    \setunit{\labelnamepunct}%
-	\usebibmacro{in:}%    
-    \newblock%
-    \ifnameundef{editor}%
-    {%
-    		\setunit{\adddot\space}%
-    		\newunit%
-    }%
-    {%
-     	\setunit{\addspace}%
-     	\printnames[byeditor]{editor}%
-     	\clearname{editor}%
-     	\setunit{\space}%
-     	\printtext[parens]{Hrsg.}%
-     	\setunit{\addcolon\space}%
-     	\newunit%
-     }%
-	\printfield{booktitle}%
-	\setunit{\addcomma\space}%
-	\printfield{pages}%
-	\setunit{\addcomma\space}%
-    \usebibmacro{date}%
-    \usebibmacro{finentry}
-}
 
-\DeclareBibliographyDriver{book}{%
-  \usebibmacro{bibindex}%
-  \usebibmacro{begentry}%
-  \usebibmacro{author/editor+others/translator+others}%
-  \setunit{\labelnamepunct}\newblock
-  \usebibmacro{maintitle+title}%
-  \newunit
-  \printlist{language}%
-  \newunit\newblock
-  \usebibmacro{byauthor}%
-  \newunit\newblock
-  \usebibmacro{byeditor+others}%
-  \newunit\newblock
-  \printfield{edition}%
-  \newunit
-  \iffieldundef{maintitle}
-    {\printfield{volume}%
-     \printfield{part}}
-    {}%
-  \newunit
-  \printfield{volumes}%
-  \newunit\newblock
-  \usebibmacro{series+number}%
-  \newunit\newblock
-  \printfield{note}%
-  \newunit\newblock
-  \usebibmacro{publisher+location+date}%
-  \newunit\newblock
-  \usebibmacro{chapter+pages}%
-  \newunit
-  \printfield{pagetotal}%
-  \newunit\newblock
-  \usebibmacro{doi+eprint+url}%
-  \newunit\newblock
-  \usebibmacro{addendum+pubstate}%
-  \setunit{\bibpagerefpunct}\newblock
-  \usebibmacro{pageref}%
-  \setunit{\addcomma\space}
-  \usebibmacro{date}
-  \usebibmacro{finentry}}
-%  
-%
- \DeclareBibliographyDriver{online}{%
-   \usebibmacro{bibindex}%
-   \usebibmacro{begentry}%
-   \ifnameundef{author}
-    {\printtext{Autor unbekannt}}
-    {
-		\usebibmacro{author/editor+others/translator+others}%    
-    }%
-   \setunit{\labelnamepunct}\newblock
-   \usebibmacro{title}%
-   \newunitpunct
-   \usebibmacro{url+urldate}%
-   %\usebibmacro{addendum+pubstate}%
-   \usebibmacro{finentry}} 
-
-% Bildunterschrift
+% ============= Bildunterschrift =============
 \setcapindent{0em} % kein Einruecken der Caption von Figures und Tabellen
 \setcapwidth{0.9\textwidth}
 \setlength{\abovecaptionskip}{0.2cm} % Abstand der zwischen Bild- und Bildunterschrift
