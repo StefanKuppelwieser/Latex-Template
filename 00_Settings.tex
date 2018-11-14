@@ -1,11 +1,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Autoren		Sebastian Büchler
-%%				openSource@sbuechler.de
+%% Autoren		        Sebastian Büchler
+%%				OpenSource@sbuechler.de
 %%				https://github.com/sebikolon
 %%				
 %%				Stefan Kuppelwieser
-%%				openSource@kuppelwieser.net
+%%				OpenSource@kuppelwieser.net
 %%				https://github.com/StefanKuppelwieser
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,6 +68,7 @@
 \usepackage{threeparttable}        			% Für Fußnoten ind er Tabelle
 \usepackage{epstopdf} 					% enable eps graphics
 \usepackage{svg}					% Um Vektorbilder hinzufügen zu können
+\usepackage{chngcntr}					% Für fortlaufende Fußnoten im gesammten Dokument
 
 % ============= Erlaubt überall Umlaute =============
 \lstset{literate=%
@@ -80,6 +81,9 @@
     {ö}{{\"o}}1
     {~}{{\textasciitilde}}1
 }
+
+% ============= Fortlaufende Fußnoten =============
+\counterwithout{footnote}{chapter}
 
 % ============= Formatierung fuer Quellcode-Listings =============
 \lstset{
