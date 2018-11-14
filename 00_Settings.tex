@@ -66,6 +66,8 @@
 \usepackage{float}
 \restylefloat{figure}
 \usepackage{threeparttable}        			% Für Fußnoten ind er Tabelle
+\usepackage{epstopdf} 					% enable eps graphics
+\usepackage{svg}					% Um Vektorbilder hinzufügen zu können
 
 % ============= Erlaubt überall Umlaute =============
 \lstset{literate=%
@@ -113,6 +115,8 @@
     maxbibnames=99,   	% Alle Autoren (kein et al.)
     backref=false,    	% keine Ruueckverweise auf Zitatseiten    
    }
+   
+\renewcommand*{\labelalphaothers}{} % alpha label ohne +
 
 % ============= Bildunterschrift =============
 \setcapindent{0em} % kein Einruecken der Caption von Figures und Tabellen
